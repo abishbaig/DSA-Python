@@ -1,44 +1,47 @@
 class Node:
-    def __init__(self, data: int, next: "Node" = None):
+    def __init__(self, data: int, next: "Node" = None, prev: "Node" = None):
         self.data = data
         self.next = next
+        self.prev = prev
 
     def __str__(self) -> str:
         return str(self.data)
 
 
-class SinglyLL:
+class DoublyLL:
     def __init__(self):
         self.head: Node = None
-        self.size: int = 0
+        self.tail: Node = None
 
     # T.C = O(1)
     def insertAtHead(self, val: int):
         newNode: Node = Node(val)
         if not self.head:
-            self.head = newNode
+            self.head, self.tail = newNode
         else:
             newNode.next = self.head
+            self.head.prev = newNode
             self.head = newNode
 
-        self.size += 1
-
-    # T.C = O(n)
+    # T.C = O(1)
     def insertAtTail(self, val: int):
         newNode: Node = Node(val)
         if not self.head:
-            self.head = newNode
+            self.head, self.tail = newNode
         else:
-            tempNode: Node = self.head
-            while tempNode.next != None:
-                tempNode = tempNode.next
-            tempNode.next = newNode
+            self.tail.next = newNode
+            newNode.prev = self.tail
+            self.tail = newNode
 
-        self.size += 1
-
-    # T.C = O(1)
+    # T.C = O(n)
     def __len__(self) -> int:
-        return self.size
+        tempNode: Node = self.head
+        count: int = 0
+        while tempNode:
+            count += 1
+            tempNode = tempNode.next
+
+        return count
 
     # T.C = O(n)
     def insertAtAnyPos(self, val: int, pos: int):
@@ -59,8 +62,6 @@ class SinglyLL:
             prevNode.next = newNode
             newNode.next = currNode
 
-        self.size += 1
-
     # T.C = O(1)
     def deleteAtHead(self):
         if not self.head:
@@ -69,8 +70,6 @@ class SinglyLL:
             tempNode: Node = self.head
             self.head = tempNode.next
             del tempNode
-
-            self.size -= 1
 
     # T.C = O(n)
     def deleteAtTail(self):
@@ -85,8 +84,6 @@ class SinglyLL:
 
             prevNode.next = None
             del currNode
-
-            self.size -= 1
 
     # T.C = O(n)
     def deleteAtAnyPos(self, pos: int):
@@ -106,8 +103,6 @@ class SinglyLL:
             prevNode.next = currNode.next
             currNode.next = None
             del currNode
-
-            self.size -= 1
 
     # T.C = O(n)
     def updateListByValue(self, newVal: int, prevVal: int):
@@ -148,14 +143,13 @@ class SinglyLL:
 
 
 def main():
-    obj = SinglyLL()
+    obj = DoublyLL()
     obj.insertAtHead(1)
     obj.insertAtTail(2)
     obj.insertAtAnyPos(3, 2)
     obj.traverseList()
     obj.updateListByPos(5, 3)
     obj.traverseList()
-    # print(len(obj))
 
 
 if __name__ == "__main__":
