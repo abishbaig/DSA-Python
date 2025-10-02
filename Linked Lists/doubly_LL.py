@@ -77,7 +77,8 @@ class DoublyLL:
             tempNode: Node = self.head
             self.head = tempNode.next
             tempNode.next = None
-            self.head.prev = None
+            if self.head != None:
+                self.head.prev = None
             del tempNode
 
             self.size -= 1

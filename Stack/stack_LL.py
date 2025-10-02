@@ -9,17 +9,17 @@ class Node:
 
 class Stack:
     def __init__(self):
-        self.head: Node = None
+        self.top: Node = None
         self.size: int = 0
 
     # T.C = O(1)
-    def insertAtHead(self, val: int):
+    def push(self, val: int):
         newNode: Node = Node(val)
-        if not self.head:
-            self.head = newNode
+        if not self.top:
+            self.top = newNode
         else:
-            newNode.next = self.head
-            self.head = newNode
+            newNode.next = self.top
+            self.top = newNode
 
         self.size += 1
 
@@ -28,13 +28,14 @@ class Stack:
         return self.size
 
     # T.C = O(1)
-    def deleteAtHead(self) -> int:
-        if not self.head:
+    def pop(self) -> int:
+        if not self.top:
             print("Stack Underflow Error")
+            return float("-inf")
         else:
-            tempNode: Node = self.head
+            tempNode: Node = self.top
             tempData = tempNode.data
-            self.head = tempNode.next
+            self.top = tempNode.next
             del tempNode
 
             self.size -= 1
@@ -42,35 +43,36 @@ class Stack:
 
     # T.C = O(1)
     def isEmpty(self) -> bool:
-        if self.head:
+        if self.top:
             return False
         else:
             return True
 
     # T.C = O(1)
-    def peekAtHead(self) -> int:
+    def peek(self) -> int:
         if self.isEmpty():
-            return self.head.data
+            return self.top.data
         else:
             print("Stack Underflow Error")
+            return float("-inf")
 
     # T.C = O(1)
-    def updateAtHead(self, newVal: int):
+    def updateAtTop(self, newVal: int):
         if self.isEmpty():
-            self.head.data = newVal
+            self.top.data = newVal
         else:
             print("List is not initialized")
 
 
 def main():
     stack = Stack()
-    stack.insertAtHead(1)
-    stack.insertAtHead(2)
-    stack.insertAtHead(3)
-    stack.insertAtHead(4)
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+    stack.push(4)
 
     while stack.isEmpty() != True:
-        print(stack.deleteAtHead())
+        print(stack.pop())
 
 
 if __name__ == "__main__":
