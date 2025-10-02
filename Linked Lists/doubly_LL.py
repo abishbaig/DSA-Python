@@ -12,43 +12,46 @@ class DoublyLL:
     def __init__(self):
         self.head: Node = None
         self.tail: Node = None
+        self.size: int = 0
 
     # T.C = O(1)
     def insertAtHead(self, val: int):
         newNode: Node = Node(val)
         if not self.head:
-            self.head, self.tail = newNode
+            self.head = newNode
+            self.tail = newNode
         else:
             newNode.next = self.head
             self.head.prev = newNode
             self.head = newNode
 
+        self.size += 1
+
     # T.C = O(1)
     def insertAtTail(self, val: int):
         newNode: Node = Node(val)
         if not self.head:
-            self.head, self.tail = newNode
+            self.head = newNode
+            self.tail = newNode
         else:
             self.tail.next = newNode
             newNode.prev = self.tail
             self.tail = newNode
 
-    # T.C = O(n)
-    def __len__(self) -> int:
-        tempNode: Node = self.head
-        count: int = 0
-        while tempNode:
-            count += 1
-            tempNode = tempNode.next
+        self.size += 1
 
-        return count
+    # T.C = O(1)
+    def __len__(self) -> int:
+        return self.size
 
     # T.C = O(n)
     def insertAtAnyPos(self, val: int, pos: int):
         newNode: Node = Node(val)
         if not self.head:
             self.head = newNode
-        elif pos > len(self):
+            self.tail = newNode
+            self.size += 1
+        elif pos >= len(self):
             self.insertAtTail(val)
         else:
             # Using Slow Fast Pointer
@@ -60,7 +63,11 @@ class DoublyLL:
                 currNode = currNode.next
 
             prevNode.next = newNode
+            newNode.prev = prevNode
+            currNode.prev = newNode
             newNode.next = currNode
+
+            self.size += 1
 
     # T.C = O(1)
     def deleteAtHead(self):
@@ -69,21 +76,28 @@ class DoublyLL:
         else:
             tempNode: Node = self.head
             self.head = tempNode.next
+            tempNode.next = None
+            self.head.prev = None
             del tempNode
 
-    # T.C = O(n)
+            self.size -= 1
+
+    # T.C = O(1)
     def deleteAtTail(self):
         if not self.head:
             print("List is not Initialiazed")
+        elif len(self) == 1:
+            print(
+                "Only 1 Element Exists which Cannot be deleted If Head is Present as Both Head and Tail Points to same Node"
+            )
         else:
-            currNode: Node = self.head
-            prevNode: Node = None
-            while currNode.next != None:
-                prevNode = currNode
-                currNode = currNode.next
+            tempNode: Node = self.tail
+            self.tail = tempNode.prev
+            self.tail.next = None
+            tempNode.prev = None
+            del tempNode
 
-            prevNode.next = None
-            del currNode
+            self.size -= 1
 
     # T.C = O(n)
     def deleteAtAnyPos(self, pos: int):
@@ -91,7 +105,7 @@ class DoublyLL:
             print("List is not Initialiazed")
         elif pos <= 1:
             self.deleteAtHead()
-        elif pos > len(self):
+        elif pos >= len(self):
             self.deleteAtTail()
         else:
             currNode: Node = self.head
@@ -101,8 +115,11 @@ class DoublyLL:
                 currNode = currNode.next
 
             prevNode.next = currNode.next
+            currNode.next.prev = prevNode
             currNode.next = None
             del currNode
+
+            self.size -= 1
 
     # T.C = O(n)
     def updateListByValue(self, newVal: int, prevVal: int):
@@ -137,7 +154,7 @@ class DoublyLL:
     def traverseList(self):
         tempNode: Node = self.head
         while tempNode:
-            print(tempNode.data, end=" -> ")
+            print(tempNode.data, end=" <-> ")
             tempNode = tempNode.next
         print()
 
@@ -149,6 +166,8 @@ def main():
     obj.insertAtAnyPos(3, 2)
     obj.traverseList()
     obj.updateListByPos(5, 3)
+    obj.traverseList()
+    obj.deleteAtAnyPos(3)
     obj.traverseList()
 
 
