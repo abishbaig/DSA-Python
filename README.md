@@ -21,7 +21,8 @@ Collection of Data Structures and Algorithms implementations in Python.
 
 ### Searching Algorithms
 
-- 
+- Linear Search
+- Binary Search
 
 ### Graph Algorithms
 
