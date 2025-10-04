@@ -10,6 +10,7 @@ Collection of Data Structures and Algorithms implementations in Python.
 - Stack
 - Queue
 - Hash Table
+- Binary Tree
 
 
 ## Algorithms
