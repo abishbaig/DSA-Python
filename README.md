@@ -11,6 +11,7 @@ Collection of Data Structures and Algorithms implementations in Python.
 - Queue
 - Hash Table
 - Binary Tree
+- Binary Search Tree
 
 
 ## Algorithms
@@ -31,7 +32,12 @@ Collection of Data Structures and Algorithms implementations in Python.
 
 ### Tree Algorithms
 
-- 
+- Inorder Traversal *(Recursive DFS)*
+- Preorder Traversal *(Recursive DFS)*
+- Postorder Traversal *(Recursive DFS)*
+- Inorder Successor
+- Level Order Traversal *(BFS)*
+- Iterative DFS
 
 ### Dynamic Programming
 
