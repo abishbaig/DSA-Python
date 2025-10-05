@@ -13,13 +13,14 @@ Collection of Data Structures and Algorithms implementations in Python.
 - Binary Tree
 - Binary Search Tree
 - AVL Tree
+- Heap and Priority Queue
 
 
 ## Algorithms
 
 ### Sorting Algorithms
 
-- 
+- Heap Sort
 
 
 ### Searching Algorithms
