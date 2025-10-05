@@ -67,8 +67,8 @@ class BST:
                 currNode = currNode.left
             return currNode
 
-    # T.C = O(N log N) but Worst = O(H)
-    # S.C = O(N log N) but Worst = O(H)
+    # T.C = O(log N) but Worst = O(H)
+    # S.C = O(log N) but Worst = O(H)
     def __deleteNode(self, node: TreeNode, target: int) -> TreeNode:
         if not node:
             return None

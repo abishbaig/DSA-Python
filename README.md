@@ -12,6 +12,7 @@ Collection of Data Structures and Algorithms implementations in Python.
 - Hash Table
 - Binary Tree
 - Binary Search Tree
+- AVL Tree
 
 
 ## Algorithms
