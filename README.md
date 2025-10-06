@@ -20,7 +20,14 @@ Collection of Data Structures and Algorithms implementations in Python.
 
 ### Sorting Algorithms
 
-- Heap Sort
+- Heap Sort --> *O(N log N)*
+- Bubble Sort --> *O(N^2)*
+- Selection Sort --> *O(N^2)*
+- Insertion Sort --> *O(N^2)*
+- Merge Sort --> *O(N log N)*
+- Quick Sort --> *O(N log N)*
+- Counting Sort --> *O(N+K)*
+- Radix Sort --> *O(N log N)*
 
 
 ### Searching Algorithms
