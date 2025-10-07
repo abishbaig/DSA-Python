@@ -14,6 +14,7 @@ Collection of Data Structures and Algorithms implementations in Python.
 - Binary Search Tree
 - AVL Tree
 - Heap and Priority Queue
+- Graph
 
 
 ## Algorithms
@@ -37,7 +38,8 @@ Collection of Data Structures and Algorithms implementations in Python.
 
 ### Graph Algorithms
 
-- 
+- DFS --> *O(V+E)*
+- BFS --> *O(V+E)*
 
 ### Tree Algorithms
 
