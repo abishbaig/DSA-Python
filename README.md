@@ -57,7 +57,7 @@ Collection of Data Structures and Algorithms implementations in Python.
 ## Problem Sovling Techniques
 
 - Recursion
-- Two Pointer Approach
+- Two Pointer and Sliding Window
 
 ##  Getting Started
 
