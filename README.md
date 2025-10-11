@@ -52,7 +52,7 @@ Collection of Data Structures and Algorithms implementations in Python.
 
 ### Dynamic Programming
 
-- 
+- Fibonacci Series Using Memoization and Tabulation 
 
 ## Problem Sovling Techniques
 
